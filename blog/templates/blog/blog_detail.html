@@ -1,0 +1,25 @@
+{% extends 'first_app/base.html' %}
+
+{% block content %}
+
+<a href="{% url 'blogList' %}"> 전체게시글 보기 </a>
+
+블로그 게시글입니다.
+<div class="post">
+     <h1>{{ post.title }}</h1>
+     <h1>{{ post.author }}</h1>
+     <p>{{ post.text|linebreaksbr }}</p>
+
+    {% if post.published_date %}
+        <div class="date">
+            {{ post.published_date }}
+        </div>
+    {% endif %}
+
+        <a href="{% url 'blogEdit' pk=post.pk %}">글 수정하기</a>
+        <a href="{% url 'blogDelete' pk=post.pk %}">글 삭제하기</a>
+</div>
+
+
+
+{% endblock %}

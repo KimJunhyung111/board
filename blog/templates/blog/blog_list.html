@@ -1,0 +1,16 @@
+{% extends 'first_app/base.html' %}
+
+{% block content %}
+
+전체보기 페이지입니다.
+
+<a href= "{% url 'blogNew' %} " > 새로운 글 쓰기 </a>
+
+{% for post in posts %}
+    <div style="border: solid 1px black;">
+        <h1><a href="{% url 'blogDetail' pk=post.pk %}" >{{ post.title}} </a> </h1>
+        <p>published: {{ post.published_date|linebreaksbr}}</p>
+    </div>
+{% endfor %}
+
+{% endblock %}
